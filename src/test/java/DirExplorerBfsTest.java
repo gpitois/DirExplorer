@@ -1,5 +1,7 @@
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 
@@ -16,10 +18,12 @@ public class DirExplorerBfsTest {
 
     private static final String BFS_OUTPUT = "root a b aa ab ba ";
 
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     @Before
     public void setUp() throws Exception {
-        root = new File("root");
-        root.mkdir();
+        root = folder.newFolder("root");
         File a = new File(root, "a");
         a.mkdir();
         File b = new File(root, "b");
